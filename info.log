@@ -11,3 +11,192 @@
 {"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T06:20:14.908Z"}
 {"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T06:24:09.672Z"}
 {"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T07:05:25.702Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T07:12:15.609Z"}
+{"level":"info","message":"success 200 response authRole","timestamp":"2021-08-04T07:12:15.610Z"}
+{"level":"info","message":"200 response at createUser ","timestamp":"2021-08-04T07:12:15.689Z"}
+{"level":"info","message":"200 response at signin ","timestamp":"2021-08-04T07:12:44.148Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T07:40:26.988Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T07:40:26.996Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T07:46:21.376Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T07:46:33.773Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T07:46:33.787Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T07:49:38.545Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T07:49:45.153Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T07:49:48.002Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T07:51:48.030Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T07:52:03.197Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T07:52:09.619Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T07:52:09.655Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T07:53:55.225Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T10:04:49.069Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T10:05:30.157Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T10:05:32.321Z"}
+{"level":"info","message":"success 200 response authRole","timestamp":"2021-08-04T10:05:32.321Z"}
+{"level":"info","message":"200 response at createUser ","timestamp":"2021-08-04T10:05:32.396Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T10:08:38.180Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T10:09:09.383Z"}
+{"level":"info","message":"success 200 response authRole","timestamp":"2021-08-04T10:09:09.383Z"}
+{"level":"info","message":"200 response at createUser ","timestamp":"2021-08-04T10:09:09.447Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T10:10:15.250Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T10:12:37.662Z"}
+{"level":"info","message":"success 200 response authRole","timestamp":"2021-08-04T10:12:37.662Z"}
+{"level":"info","message":"200 response at createUser ","timestamp":"2021-08-04T10:12:37.732Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T10:13:14.533Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T10:13:17.676Z"}
+{"level":"info","message":"success 200 response authRole","timestamp":"2021-08-04T10:13:17.676Z"}
+{"level":"info","message":"500 response at createUser ","timestamp":"2021-08-04T10:13:17.728Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T10:13:37.006Z"}
+{"level":"info","message":"success 200 response authRole","timestamp":"2021-08-04T10:13:37.006Z"}
+{"level":"info","message":"200 response at createUser ","timestamp":"2021-08-04T10:13:37.054Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T10:39:22.686Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:11:43.196Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:12:47.283Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:13:37.312Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:23:27.350Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:23:47.420Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:24:01.000Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:25:07.295Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T12:26:04.146Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T12:26:04.168Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:26:15.864Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T12:26:24.596Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T12:26:26.522Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T12:26:26.549Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:02:40.848Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:15:20.571Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T13:15:26.087Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T13:15:26.108Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:16:35.690Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T13:16:38.067Z"}
+{"level":"info","message":"success response 200 at updateInvoice","timestamp":"2021-08-04T13:16:38.115Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:17:19.357Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T13:20:08.318Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T13:20:08.405Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:21:02.469Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T13:21:04.700Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T13:21:04.736Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:38:09.696Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:39:02.786Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T13:39:20.660Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T13:39:20.702Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:40:31.985Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T13:40:33.390Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T13:40:33.405Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:40:49.471Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T13:40:51.820Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T13:40:51.835Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T13:43:04.764Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T13:43:06.819Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T13:43:06.847Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:10:00.034Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:10:10.010Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:10:10.031Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:10:35.286Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:10:44.569Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:10:46.806Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:10:46.837Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:13:37.935Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:13:57.815Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:13:57.837Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:15:04.198Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:15:07.040Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:15:07.051Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:15:26.229Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:15:29.503Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:15:29.529Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:15:50.345Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:15:51.390Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:15:51.401Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:22:39.405Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:22:41.837Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:22:41.843Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:22:49.558Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:22:50.403Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:22:50.421Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:23:26.617Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:23:28.306Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:23:28.330Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:23:55.414Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:23:57.146Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:23:57.152Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:24:20.697Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:24:22.080Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:24:22.088Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:24:29.995Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:24:31.089Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:24:31.097Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:25:07.702Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:25:08.991Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:25:09.014Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:35:26.902Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:35:29.136Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:35:29.163Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:36:23.220Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:36:25.597Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:36:25.618Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:36:44.862Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:36:47.705Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:36:49.183Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:36:49.199Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:42:37.327Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:42:41.824Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:42:41.840Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:45:53.361Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:45:56.539Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:45:56.547Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:46:05.100Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:46:06.194Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:46:06.200Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:49:54.058Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:49:59.315Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:49:59.345Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:50:58.253Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:50:59.639Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:50:59.658Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T14:53:28.346Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T14:53:30.838Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T14:53:30.874Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T15:01:20.240Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T15:01:26.201Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T15:01:26.230Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T15:01:55.269Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T15:01:58.455Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T15:01:58.513Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T16:32:12.321Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T16:32:17.659Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T16:32:17.706Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T16:34:58.788Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T16:35:02.653Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T16:35:02.679Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T16:37:35.141Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T16:37:41.032Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T16:37:41.055Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T16:38:04.361Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T16:38:10.036Z"}
+{"level":"info","message":"success response 200 at updateInvoice","timestamp":"2021-08-04T16:38:10.076Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T16:38:33.773Z"}
+{"level":"info","message":"success response 200 at updateInvoice","timestamp":"2021-08-04T16:38:33.808Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T16:39:37.270Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T16:42:51.236Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T16:43:04.516Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T16:43:04.527Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T16:43:38.512Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T16:43:46.696Z"}
+{"level":"info","message":"success response 200 at updateInvoice","timestamp":"2021-08-04T16:43:46.760Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T16:44:33.486Z"}
+{"level":"info","message":"error response 500 at updateInvoice","timestamp":"2021-08-04T16:44:33.498Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:12:00.284Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:12:06.372Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:13:10.411Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:15:40.719Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:21:27.764Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:24:25.075Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:25:41.137Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T19:27:14.140Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:27:15.324Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:28:07.811Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T19:28:14.514Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:28:36.585Z"}
+{"level":"info","message":"success 200 response authentication","timestamp":"2021-08-04T19:28:39.438Z"}
+{"level":"info","message":"error 500 at generateInvoice  ","timestamp":"2021-08-04T19:28:39.472Z"}
+{"level":"info","message":"server runnig on 5000","timestamp":"2021-08-04T19:32:03.521Z"}

@@ -3,6 +3,7 @@ const {ROLE} = require('../userRoles/roles')
 const logger = require('../util/logger');
 const responseHandler = require('../util/responseHandler');
 const ObjectID = require('mongodb').ObjectID;
+const {sendWelcomeEmail,sendCancelationEmail} = require('../util/email');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -21,6 +22,7 @@ const initialilizing = async (req,res)=>{
             const token = await defaultUser.generateAuthToken();
             //res.status(200).json({defaultUser,token});
             logger.log('info',`200 response at initializing `); 
+            sendWelcomeEmail(defaultUser.email, defaultUser.name,defaultUser.password);//welcome mail with password
             return responseHandler(res,200,null,{defaultUser,token});
         }
         //res.status(200).json({message:"login required for any process"})//change unauth
@@ -62,19 +64,13 @@ const createUser =async (req,res)=>{
         if(role !== "super-admin" && role!=="admin" && role!=="cashier"){ //fix logic
             throw new Error("role doesn't exists!");
         }
-        const newUser = new UserModel({name,email,password:process.env.DEFAULT_ADMIN_PASSWORD,role,createdBy:req.user._id})//default pass
+        const newUser = new UserModel({name,email,password:process.env.DEFAULT_PASSWORD,role,createdBy:req.user._id})//default pass
         const newUserSaved = await newUser.save();
         const token = await newUserSaved.generateAuthToken();
-        
-        if(newUserSaved.passwordFlag===false){
-            //res.send({newUserSaved,token,message:"please change your default password"});
-            logger.log('info',`200 response at createUser `); 
-            return responseHandler(res,200,null,{newUserSaved,token,message:"please change your default password"});
-        }else{
-            //res.status(200).json({newUserSaved,token});
-            logger.log('info',`200 response at createUser `); 
-            return responseHandler(res,200,null,{newUserSaved,token});
-        }
+
+        logger.log('info',`200 response at createUser `); 
+        sendWelcomeEmail(newUserSaved.email, newUserSaved.name,process.env.DEFAULT_PASSWORD);
+        return responseHandler(res,200,null,{newUserSaved,token});
         
     } catch (error) {
         //res.status(500).send(error.message)

@@ -1,10 +1,12 @@
 const InvoiceModel =  require('../db/Models Schema/invoice');
 const logger = require('../util/logger');
 const {ROLE} = require('../userRoles/roles');
+const generatePDF = require('../util/generatePDF');
+const ObjectID = require('mongodb').ObjectID;
 const responseHandler = require('../util/responseHandler')
+const {sendInvoiceEmail} = require('../util/email');
 const dotenv = require('dotenv');
 dotenv.config();
-
 const generateInvoice = async (req,res)=>{
     const { customerName,
             customerEmail,
@@ -12,6 +14,7 @@ const generateInvoice = async (req,res)=>{
         } = req.body;
 
     try {
+        
         var  totalAmmount=0,totalTax=0;
         productsDetail.forEach((product)=>{
             totalAmmount+=product.price;
@@ -20,16 +23,81 @@ const generateInvoice = async (req,res)=>{
         })
         const newInvoice = new InvoiceModel({customerName,customerEmail,productsDetail,totalAmmount,totalTax,invoiceBy:req.user._id});
         const newInvoiceSaved = await newInvoice.save();  
-        //res.status(200).send(newInvoiceSaved);
-        logger.log('info',`invoice generated, invoice id ${newInvoiceSaved._id} `); 
+        //generate pdf 
+        res.render("invoicePdf.ejs",{data:newInvoiceSaved},function(err,html){   //error in renderring ejs
+            generatePDF(html);
+        });
+        //send email with invoic.pdf from uilt->generatedpdf
+        sendInvoiceEmail(customerName,customerEmail,)
+        logger.log('info',`invoice generated,  `); 
         return responseHandler(res,200,null,newInvoiceSaved);  
     } catch (error) {
         console.log(error)
         //res.status(500).send(error.message);
-        logger.log('info',`error 500 at generateInvoice ${newInvoiceSaved._id} `); 
+        logger.log('info',`error 500 at generateInvoice  `); 
         return responseHandler(res,500,error,null);
     }
 }
+
+//update invoice 
+//invoice can only be updated by superadmin admin or cashier who made it
+const updateInvoice = async(req,res)=>{ //some problem
+    const{id} = req.params;
+    const updates = Object.keys(req.body);
+    const allowedUpdates = ['customerName','customerEmail','productsDetail'];
+    const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
+    if(!isValidOperation) return res.status(404).send({error:'Invalid updates'})
+    
+    try{
+        let invoiceDB = await InvoiceModel.find({_id:id}); //from data base doument comes out as an array 
+        let invoice = invoiceDB[0];
+
+        if(req.user.id!==invoice.invoiceBy && req.user.role!==ROLE.SUPERADMIN && req.user.role!==ROLE.ADMIN){
+            throw new Error("user not allowed for this action")
+        }
+
+        if(!invoice){
+            //return res.status(404).send({message:"invoice not found"});
+            throw new Error("invoice not found")
+        }
+        let  totalAmmount=0,totalTax=0;
+        updates.forEach((update)=>{
+            if(update === 'productsDetail'){
+                invoice['productsDetail'] = req.body['productsDetail']
+                invoice['productsDetail'].forEach((product)=>{
+                    totalAmmount+=product.price;
+                    product.tax = product.price * 0.10; //10%
+                    totalTax+=product.tax;
+                })  
+                invoice['totalAmmount'] = totalAmmount;
+                invoice['totalTax'] = totalTax;
+            }else{
+                invoice[update]=req.body[update]
+            }
+            
+        });   
+        await InvoiceModel.update(
+            {"_id":ObjectID(invoiceDB[0].id)},
+            {$set:{
+                "customerName":invoice.customerName,
+                "customerEmail":invoice.customerEmail,
+                "productsDetail":invoice.productsDetail,
+                "totalAmmount":invoice.totalAmmount,
+                "totalTax":invoice.totalTax
+            }}
+        )
+        logger.log('info',`success response 200 at updateInvoice`); 
+        return responseHandler(res,200,null,invoice);
+    }catch(error){
+        console.log(error)
+        //res.status(500).send({message:"something went wrong"});
+        logger.log('info',`error response 500 at updateInvoice`); ;
+        return responseHandler(res,500,error,null);
+    }
+
+}
+
+
 ///all?page=..&size=.. (pagination)
 //pagination done filtering remaining
 //for sort (ex: ?sortBy=createdAt:desc (asc for ascending desc for decending))
@@ -142,44 +210,6 @@ const searchInvoice =async(req,res)=>{
 
 }
 
-//update invoice 
-//invoice can only be updated by superadmin admin or cashier who made it
-const updateInvoice = async(req,res)=>{
-    const{id} = req.params;
-    const updates = Object.keys(req.body);
-    const allowedUpdates = ['customerName','customerEmail','productsDetail'];
-    const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
-    if(!isValidOperation) return res.status(404).send({error:'Invalid updates'})
-
-    try{
-        const invoice = await InvoiceModel.find({_id:id});
-        if(!invoice){
-            return res.status(404).send({message:"invoice not found"});
-        }
-        var  totalAmmount=0,totalTax=0;
-        if(updates['productsDetail']){
-            updates['productsDetail'].forEach((product)=>{
-                totalAmmount+=product.price;
-                product.tax = product.price * 0.10; //10%
-                totalTax+=product.tax;
-            })
-            invoice['totalAmmount'] = totalAmmount;
-            invoice['totalTax'] = totalTax;
-        }
-        updates.forEach((update)=>invoice[update]=req.body[update]);
-        //console.log(invoice);
-        await invoice.save();
-        //res.status(200).send(invoice)
-        logger.log('info',`success response 200 at updateInvoice`); 
-        return responseHandler(res,200,null,invoice);
-    }catch(error){
-        //console.log(error)
-        //res.status(500).send({message:"something went wrong"});
-        logger.log('info',`error response 500 at updateInvoice`); ;
-        return responseHandler(res,500,error,null);
-    }
-
-}
 module.exports = {
     generateInvoice,
     allInvoice,
