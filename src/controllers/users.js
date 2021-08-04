@@ -1,5 +1,6 @@
 const UserModel =  require('../db/Models Schema/user');
 const {ROLE} = require('../userRoles/roles')
+const logger = require('../util/logger');
 const responseHandler = require('../util/responseHandler');
 const ObjectID = require('mongodb').ObjectID;
 const dotenv = require('dotenv');
@@ -19,13 +20,16 @@ const initialilizing = async (req,res)=>{
             })
             const token = await defaultUser.generateAuthToken();
             //res.status(200).json({defaultUser,token});
+            logger.log('info',`200 response at initializing `); 
             return responseHandler(res,200,null,{defaultUser,token});
         }
         //res.status(200).json({message:"login required for any process"})//change unauth
+        logger.log('info',`success 200 response at initializing `); 
         return responseHandler(res,200,null,{message:"login required for any process"});
     } catch (error) {
         //res.status(500).json({message:"something went wrong"})
-        return responseHandler(res,200,error,null);
+        logger.log('info',`error 500 response at initializing `); 
+        return responseHandler(res,500,error,null);
     }
 }
 const signin = async(req,res)=>{
@@ -35,15 +39,18 @@ const signin = async(req,res)=>{
         const token = await user.generateAuthToken();
         if(user.passwordFlag===false){
             //res.send({user,token,message:"please change your default password"});
+            logger.log('info',`200 response at signin `); 
             return responseHandler(res,200,null,{user,token,message:"please change your default password"});
         }else{
             //res.send({user,token});
+            logger.log('info',`200 response at signin `); 
             return responseHandler(res,200,null,{user,token});
         }
         
     }catch(error){
         //console.log(error);
         //res.status(400).send();
+        logger.log('info',`error 400 response at signin `); 
         return responseHandler(res,400,error,null);
     }
 }
@@ -61,14 +68,17 @@ const createUser =async (req,res)=>{
         
         if(newUserSaved.passwordFlag===false){
             //res.send({newUserSaved,token,message:"please change your default password"});
+            logger.log('info',`200 response at createUser `); 
             return responseHandler(res,200,null,{newUserSaved,token,message:"please change your default password"});
         }else{
             //res.status(200).json({newUserSaved,token});
+            logger.log('info',`200 response at createUser `); 
             return responseHandler(res,200,null,{newUserSaved,token});
         }
         
     } catch (error) {
         //res.status(500).send(error.message)
+        logger.log('info',`500 response at createUser `); 
         return responseHandler(res,500,error,null);
     }
 
@@ -87,14 +97,17 @@ const getUsers = async(req,res)=>{
             users =await UserModel.findById(req.user._id);
         }
         //res.status(200).json(users);
+        logger.log('info',`200 response at getUsers `); 
         return responseHandler(res,200,null,users);
     } catch (error) {
         //console.log(error);
         //res.status(500).send({message:"something went wronge"});
+        logger.log('info',`500 response at getUsers `); 
         return responseHandler(res,500,error,null);
     }
 }
 const updateUser = async(req,res)=>{
+    //make a chek if password is updated make passwordFlag true
     const updates = Object.keys(req.body);
     
     const allowedUpdates = ['name','email','password'];
@@ -102,19 +115,25 @@ const updateUser = async(req,res)=>{
         return allowedUpdates.includes(update);
     })
     console.log(isValidOperation);
-    if(!isValidOperation) return res.status(404).send({error:"Invalid updates"})
+    if(!isValidOperation){
+        logger.log('info',`error 404 response at updateUser `); 
+        throw new Error("Invalid updates");
+    } 
     try {
         const user = await UserModel.findById({_id:req.params.id});
         if(!user){
-            return res.status(404).send({message:"denied"});
+            logger.log('info',`error 404 response at updateUser `); 
+            throw new Error("access denied");
         }
         updates.forEach((update)=>user[updates] = req.body[update]);
         await user.save();
         //res.send(user);
+        logger.log('info',`success 200 response at updateUser `);
         return responseHandler(res,200,null,user);
     } catch (error) {
         //console.log(error);
         //res.status(400).send(error);
+        logger.log('info',`400 response at updateUser `);
         return responseHandler(res,400,error,null);
     }
 }

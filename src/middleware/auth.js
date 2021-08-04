@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const UserModel = require('../db/Models Schema/user');
 const InvoiceModel = require('../db/Models Schema/invoice');
+const logger = require('../util/logger');
+const responseHandler = require('../util/responseHandler');
 const {ROLE,ROLE_VALUE} = require('../userRoles/roles');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -11,16 +13,18 @@ const auth = async(req,res,next)=>{
 
         const user = await UserModel.findOne({_id:decoded._id,'tokens.token':token});
         if(!user){
-            throw new Error();
+            throw new Error("authentication failure");
         }
         req.token = token;
         req.user = user;
         if(user.passwordFlag===false){
             req.message = "please change your password"
         }
+        logger.log('info',`success 200 response authentication`); 
         next();
     } catch (error) {
-        res.status(401).send({error:'authentication failure'});
+        //res.status(401).send({error:'authentication failure'});
+        return responseHandler(res,400,error,null);
     }
 }
 const authRole = (req,res,next)=>{//some error
@@ -31,9 +35,11 @@ const authRole = (req,res,next)=>{//some error
         if(LoggedUserRoleValue===0 || LoggedUserRoleValue<ROLE_VALUE[role]){
            throw new Error();
         }
+        logger.log('info',`success 200 response authRole`); 
         next();
     } catch (error) {
-        res.status(400).send({message:"user not allowed for this action"})
+        //res.status(400).send({message:"user not allowed for this action"})
+        return responseHandler(res,400,error,null);
     }
 
 }
@@ -44,9 +50,12 @@ const authUpdateUser = (req,res,next)=>{
         if(id!==req.user.id){
             throw new Error;
         }
+        logger.log('info',`success 200 response authUpdateUser`); 
         next();
     }catch(error){
-        res.status(400).send({message:"user not allowed for this action"})
+        //res.status(400).send({message:"user not allowed for this action"})
+        logger.log('info',`error 400 response authUpdateUser`); 
+        return responseHandler(res,400,error,null);
     }
 }
 const authGetInvoice = async(req,res,next)=>{
@@ -60,7 +69,9 @@ const authGetInvoice = async(req,res,next)=>{
             next();
         }
     } catch (error) {
-        res.status(500).send({message:"somthing went wrong"});
+        //res.status(500).send({message:"somthing went wrong"});
+        logger.log('info',`error 500 response authGetInvoice`); 
+        return responseHandler(res,500,error,null);
     }
 }
 

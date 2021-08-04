@@ -1,5 +1,5 @@
 const InvoiceModel =  require('../db/Models Schema/invoice');
-const ObjectID = require('mongodb').ObjectID;
+const logger = require('../util/logger');
 const {ROLE} = require('../userRoles/roles');
 const responseHandler = require('../util/responseHandler')
 const dotenv = require('dotenv');
@@ -20,12 +20,14 @@ const generateInvoice = async (req,res)=>{
         })
         const newInvoice = new InvoiceModel({customerName,customerEmail,productsDetail,totalAmmount,totalTax,invoiceBy:req.user._id});
         const newInvoiceSaved = await newInvoice.save();  
-        //res.status(200).send(newInvoiceSaved); 
+        //res.status(200).send(newInvoiceSaved);
+        logger.log('info',`invoice generated, invoice id ${newInvoiceSaved._id} `); 
         return responseHandler(res,200,null,newInvoiceSaved);  
     } catch (error) {
         console.log(error)
         //res.status(500).send(error.message);
-        return responseHandler(res,200,error,null);
+        logger.log('info',`error 500 at generateInvoice ${newInvoiceSaved._id} `); 
+        return responseHandler(res,500,error,null);
     }
 }
 ///all?page=..&size=.. (pagination)
@@ -69,10 +71,12 @@ const allInvoice =async (req,res)=>{
                                                 .sort({createdAt:sort});
         }
         //res.status(200).send(invoiceList);
+        logger.log('info',`response 200 at allInvoice  `); 
         return responseHandler(res,200,null,invoiceList);
     } catch (error) {
         console.log(error)
         //res.status(500).send({message:"somthing went wrong!"});
+        logger.log('info',`error response 500 at allInvoice`); 
         return responseHandler(res,500,error,null);
     }
 }
@@ -102,10 +106,12 @@ const salesReport = async(req,res)=>{
             totalsale += invoice.totalAmmount;
         })
         //res.status(200).send({totalsale})
+        logger.log('info',`success response 200 at salesReport`); 
         return responseHandler(res,200,null,{totalsale});
     }catch(error){
         console.log(error);
         //res.status(500).send({message:"something went wrong"})
+        logger.log('info',`error response 500 at salesReport`); 
         return responseHandler(res,500,error,null);
     }
 }
@@ -117,21 +123,21 @@ const searchInvoice =async(req,res)=>{
     const {id} = req.params;
     try {
         let invoiceList;
-        console.log(ROLE.CASHIER)
         if(req.user.role === ROLE.CASHIER){
             invoiceList = await InvoiceModel.find({invoiceBy:req.user._id,_id:id})
         }else{
             invoiceList = await InvoiceModel.find({_id:id});
         }
         if(invoiceList.length===0){
-            res.status(404).send("not found");
-            return ;
+            throw new Error("not found")
         } 
         //res.status(200).send(invoiceList);
+        logger.log('info',`success response 200 at searchInvoice`); ;
         return responseHandler(res,200,null,invoiceList);
     } catch (error) {
         //res.status(500).send({message:"somthing went wrong"});
-        return responseHandler(res,500,error,null);
+        logger.log('info',`error response 404 at searchInvoice`); 
+        return responseHandler(res,404,error,null);
     }
 
 }
@@ -163,12 +169,14 @@ const updateInvoice = async(req,res)=>{
         updates.forEach((update)=>invoice[update]=req.body[update]);
         //console.log(invoice);
         await invoice.save();
-        //res.status(200).send(invoice);
+        //res.status(200).send(invoice)
+        logger.log('info',`success response 200 at updateInvoice`); 
         return responseHandler(res,200,null,invoice);
     }catch(error){
         //console.log(error)
         //res.status(500).send({message:"something went wrong"});
-        return responseHandler(res,200,error,null);
+        logger.log('info',`error response 500 at updateInvoice`); ;
+        return responseHandler(res,500,error,null);
     }
 
 }
