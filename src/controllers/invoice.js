@@ -1,10 +1,10 @@
 const InvoiceModel =  require('../db/Models Schema/invoice');
 const logger = require('../util/logger');
 const {ROLE} = require('../userRoles/roles');
-const generatePDF = require('../util/generatePDF');
+const generatePDFandSendEmail = require('../util/generatePDF');
 const ObjectID = require('mongodb').ObjectID;
+const moment = require('moment');
 const responseHandler = require('../util/responseHandler')
-const {sendInvoiceEmail} = require('../util/email');
 const dotenv = require('dotenv');
 dotenv.config();
 const generateInvoice = async (req,res)=>{
@@ -23,13 +23,9 @@ const generateInvoice = async (req,res)=>{
         })
         const newInvoice = new InvoiceModel({customerName,customerEmail,productsDetail,totalAmmount,totalTax,invoiceBy:req.user._id});
         const newInvoiceSaved = await newInvoice.save();  
-        //generate pdf 
-        res.render("invoicePdf.ejs",{data:newInvoiceSaved},function(err,html){   //error in renderring ejs
-            generatePDF(html);
-        });
-        //send email with invoic.pdf from uilt->generatedpdf
-        sendInvoiceEmail(customerName,customerEmail,)
-        logger.log('info',`invoice generated,  `); 
+        //generate pdf //send email
+        generatePDFandSendEmail(newInvoiceSaved);
+        logger.log('info',`invoice generated `); 
         return responseHandler(res,200,null,newInvoiceSaved);  
     } catch (error) {
         console.log(error)
@@ -101,7 +97,7 @@ const updateInvoice = async(req,res)=>{ //some problem
 ///all?page=..&size=.. (pagination)
 //pagination done filtering remaining
 //for sort (ex: ?sortBy=createdAt:desc (asc for ascending desc for decending))
-//get all tasks(?date=...&invoiceBy=...) //*filtering
+//get all tasks(?time=...&invoiceBy=...) //*filtering
 const allInvoice =async (req,res)=>{
     let{page,size} = req.query;//pagination
     page = page?page:1;
@@ -112,28 +108,37 @@ const allInvoice =async (req,res)=>{
     const sort = req.query.sortBy==='desc'?-1:1;//sorting
 
     //filtering /***********filtering with date is left */
-    const{date,invoiceBy} = req.query;
+    const{time,invoiceBy} = req.query;
+    const isValidOperation = time==='today'||time==='week'?true:false;
+    if(!isValidOperation) throw new Error('Invalid time');
+    
     const match = {};
-    match.createdAt = date?date:null;
+    match.time = time?time:null;
     match.invoiceBy = invoiceBy?invoiceBy:null;
+    
     try {
         let invoiceList = {};
         if(req.user.role === ROLE.CASHIER){
-            invoiceList = await InvoiceModel.find({invoiceBy:req.user._id,
-                                                    date:{
-                                                        $gte: ISODate(match.createdAt),
-                                                        //$lt:  ISODate(match.createdAt)
-                                                    }})
-                                                    .limit(limit)
-                                                    .skip(skip)
-                                                    .sort({createdAt:sort});
+            
+            invoiceList = await InvoiceModel.find(invoiceBy?{invoiceBy:req.user._id}:null,
+                                                    time?{
+                                                        date:{
+                                                            $gte: moment().startOf(match.time),
+                                                            $lt:  moment().endOf(match.time)
+                                                        }
+                                                    }:null
+                                                )
+                                                .limit(limit)
+                                                .skip(skip)
+                                                .sort({createdAt:sort});
         }else{
-            invoiceList = await InvoiceModel.find({invoiceBy:invoiceBy,
-                                                    date:{
-                                                        $gte: new Date(match.createdAt),
-                                                        //$lt:  ISODate(match.createdAt)
-                                                    }
-                                                })
+            invoiceList = await InvoiceModel.find(invoiceBy?{invoiceBy:invoiceBy}:null,
+                                                    time?{
+                                                        date:{
+                                                            $gte: moment().startOf(match.time),
+                                                            $lt:  moment().endOf(match.time)
+                                                        }
+                                                    }:null)
                                                 .limit(limit)
                                                 .skip(skip)
                                                 .sort({createdAt:sort});

@@ -3,7 +3,7 @@ const {ROLE} = require('../userRoles/roles')
 const logger = require('../util/logger');
 const responseHandler = require('../util/responseHandler');
 const ObjectID = require('mongodb').ObjectID;
-const {sendWelcomeEmail,sendCancelationEmail} = require('../util/email');
+const {sendWelcomeEmail} = require('../util/email');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -110,18 +110,21 @@ const updateUser = async(req,res)=>{
     const isValidOperation = updates.every((update)=>{
         return allowedUpdates.includes(update);
     })
-    console.log(isValidOperation);
     if(!isValidOperation){
         logger.log('info',`error 404 response at updateUser `); 
         throw new Error("Invalid updates");
     } 
     try {
         const user = await UserModel.findById({_id:req.params.id});
+        
         if(!user){
             logger.log('info',`error 404 response at updateUser `); 
             throw new Error("access denied");
         }
-        updates.forEach((update)=>user[updates] = req.body[update]);
+        updates.forEach((update)=>user[update] = req.body[update]);
+        if(updates.includes('password')){
+            user['passwordFlag'] =  true;
+        }
         await user.save();
         //res.send(user);
         logger.log('info',`success 200 response at updateUser `);
